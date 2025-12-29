@@ -1,0 +1,15 @@
+websites: ["PornHub", "XVideos"]
+search_queries: ["keyword1", "keyword2"]
+categories: []
+scraped_filename: "scraped_links.txt"
+downloaded_filename: "downloaded_links.txt"
+file_path: "."
+download_path: "./downloads"
+logs_directory: "./logs"
+prefix: "PORN"
+user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0"
+downloader: "yt-dlp"
+max_videos: 1000
+sort_option: "mv"
+date_filter: "w"
+country_filter: "world"

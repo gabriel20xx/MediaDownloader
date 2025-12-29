@@ -1,0 +1,8 @@
+beautifulsoup4
+lxml
+PyYAML
+requests
+selenium
+undetected-chromedriver
+playwright
+yt-dlp
