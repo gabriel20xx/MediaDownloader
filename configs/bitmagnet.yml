@@ -1,6 +1,0 @@
-base_urls: ["http://localhost:3333"]
-use_index_page: false
-use_search_queries: true
-magnet_file: "./Magnets.txt"
-max_pages: 0
-search_queries: ["query1", "query2"]

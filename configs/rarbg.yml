@@ -1,8 +1,0 @@
-logs_directory: "./logs"
-prefix: "RARBG"
-use_index_page: true
-use_search_queries: false
-magnet_file: "./Magnets.txt"
-search_queries: []
-delay: 5
-user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0"
