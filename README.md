@@ -4,6 +4,38 @@
 
 MediaDownloader is a comprehensive Python package that combines multiple specialized downloaders into a single, easy-to-use tool. Whether you need to scrape image galleries, download torrents, or archive video content, MediaDownloader provides a unified interface to handle it all.
 
+## Node.js Web UI (New)
+
+This repository now includes a full Node.js rewrite with a web-based UI and API that matches the existing functionality.
+
+### Quick Start (Node.js)
+
+1. Install dependencies:
+
+```
+npm install
+```
+
+2. Install Playwright browsers (required for dynamic sites):
+
+```
+npx playwright install
+```
+
+3. Start the server:
+
+```
+npm start
+```
+
+4. Open the UI:
+
+```
+http://localhost:3000
+```
+
+The UI lets you edit configs, start jobs, and follow logs for all tools.
+
 ## Table of Contents
 
 - [Features](#features)

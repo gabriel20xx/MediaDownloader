@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediaDownloader</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>MediaDownloader</h1>
+    <p>Node.js server + Web UI</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Tools</h2>
+      <div class="tool-buttons" id="toolButtons"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Configuration</h2>
+      <div class="config">
+        <textarea id="configEditor" spellcheck="false"></textarea>
+        <div class="config-actions">
+          <button id="loadConfig">Reload</button>
+          <button id="saveConfig">Save</button>
+          <button id="startJob">Start Job</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Jobs</h2>
+      <div class="jobs" id="jobList"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Job Logs</h2>
+      <div class="logs" id="jobLogs"></div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

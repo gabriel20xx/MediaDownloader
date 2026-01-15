@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #0d1117;
+  color: #e6edf3;
+}
+
+header {
+  padding: 24px 32px;
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+header p {
+  margin: 4px 0 0;
+  color: #8b949e;
+}
+
+main {
+  display: grid;
+  gap: 16px;
+  padding: 24px 32px 40px;
+}
+
+.panel {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.tool-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+button {
+  background: #238636;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #30363d;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+textarea {
+  min-height: 220px;
+  background: #0d1117;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+}
+
+.config-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.jobs {
+  display: grid;
+  gap: 8px;
+}
+
+.job-card {
+  padding: 10px 12px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.job-card.active {
+  border-color: #238636;
+}
+
+.logs {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  min-height: 200px;
+  padding: 12px;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mediadownloader",
+  "version": "1.0.0",
+  "description": "MediaDownloader rewritten in Node.js with a web UI",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.19.2",
+    "js-yaml": "^4.1.0",
+    "uuid": "^9.0.1",
+    "playwright": "^1.48.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
