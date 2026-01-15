@@ -1,49 +1,204 @@
 # MediaDownloader
 
-MediaDownloader is now a Node.js application with a modern web UI, PostgreSQL backing store, and cron-based scheduling.
+> **A unified toolkit for downloading media content from various sources**
+
+MediaDownloader is a comprehensive Python package that combines multiple specialized downloaders into a single, easy-to-use tool. Whether you need to scrape image galleries, download torrents, or archive video content, MediaDownloader provides a unified interface to handle it all.
+
+## Table of Contents
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+  - [Image Gallery Scraper](#image-gallery-scraper)
+  - [YTS Torrent Downloader](#yts-torrent-downloader)
+  - [RARBG Magnet Extractor](#rarbg-magnet-extractor)
+  - [Adult Video Scraper](#adult-video-scraper)
+  - [Bitmagnet Scraper](#bitmagnet-scraper)
+- [Project Structure](#project-structure)
+- [Troubleshooting](#troubleshooting)
+- [Important Notes](#important-notes)
 
 ## Features
 
-- Web UI for creating and managing download jobs
-- Cron scheduling with immediate run support
-- PostgreSQL persistence for jobs and logs
-- Docker support
+MediaDownloader provides five specialized tools, each designed for specific use cases:
 
-## Requirements
+### 🖼️ Image Gallery Scraper
+- Automatically downloads entire image galleries from supported websites
+- Configurable CSS selectors for flexibility across different sites
+- Smart filename sanitization and duplicate detection
+- Support for multiple image formats (JPG, PNG, GIF, WebP, etc.)
+- Video content filtering with customizable skip phrases
 
-- Node.js 20+
-- PostgreSQL
+### 🎬 YTS Torrent Downloader
+- Search and download movie torrents from YTS
+- Filter by resolution (2160p, 1080p, 720p, etc.)
+- Filter by language and release year
+- Genre-based filtering
+- Random selection mode for discovering new content
+- Configurable download duration limits
 
-## Environment
+### 🧲 RARBG Magnet Extractor
+- Extract magnet links from RARBG mirror sites
+- Category-based filtering
+- Customizable search parameters
+- Automatic fallback to alternative URLs
 
-Set the database connection string via `POSTGRESQL_URL`.
+### 🔞 Adult Video Scraper
+- Download adult content from supported platforms
+- yt-dlp integration for video downloading
+- Configurable quality preferences
+- Site-specific metadata extraction
 
-Example: copy .env.example to .env and update values.
+### 🔍 Bitmagnet Scraper
+- Interface with Bitmagnet torrent indexing systems
+- Advanced search capabilities
+- Metadata extraction and organization
 
-## Install & Run
+## Prerequisites
 
-1) Install dependencies
+Before installing MediaDownloader, ensure you have the following:
 
-2) Start the server
+- **Python 3.7+** - The package requires Python 3.7 or higher
+- **Chrome/Chromium Browser** - Required for Selenium-based scrapers
+- **ffmpeg** (Optional) - Required for video processing with yt-dlp
+- **Git** - For cloning the repository
 
-The app serves the UI at http://localhost:3000 by default.
+## Installation
 
-## API
+### 1. Clone the Repository
 
-- GET /api/jobs
-- POST /api/jobs
-- PUT /api/jobs/:id
-- DELETE /api/jobs/:id
-- POST /api/jobs/:id/run
-- GET /api/jobs/:id/logs
+```bash
+git clone https://github.com/gabriel20xx/MediaDownloader.git
+cd MediaDownloader
+```
 
-## Docker
+### 2. Install Dependencies
 
-Build and run with a PostgreSQL container and pass POSTGRESQL_URL to the app container.
+```bash
+pip install -r requirements.txt
+```
 
-## Notes
+### 3. Install Browser Drivers (Recommended)
 
-Downloads are saved to a local downloads/ folder inside the app container or project root.
+For Playwright-based scraping (optional but recommended):
+
+```bash
+python -m playwright install --with-deps chromium
+```
+
+For Selenium-based scraping, place ChromeDriver in:
+- `dependencies/chromedriver/` in your working directory, or
+- Adjust the path in your configuration files
+
+### 4. Install Additional Tools (Optional)
+
+For yt-dlp functionality:
+
+```bash
+# yt-dlp is included in requirements.txt
+# Ensure ffmpeg is available on your PATH for video processing
+```
+
+## Configuration
+
+Each tool uses YAML configuration files located in the `configs/` directory. You can either:
+
+1. **Edit the packaged configs** in `configs/` directory
+2. **Create custom configs** in your working directory (takes precedence)
+
+### Available Configuration Files
+
+- **`configs/images.yaml`** - Image gallery scraper settings
+  - Base URL, download folder, CSS selectors
+  - Image extensions, skip phrases, timeouts
+
+- **`configs/yts.yml`** - YTS torrent downloader settings
+  - Download directories, resolutions, languages
+  - Release years, genres, filtering options
+
+- **`configs/rarbg.yml`** - RARBG settings
+  - Mirror URLs, categories, search parameters
+
+- **`configs/porn.yml`** - Adult video scraper settings
+  - Site configurations, quality preferences
+
+- **`configs/bitmagnet.yml`** - Bitmagnet scraper settings
+  - API endpoints, search filters
+
+**Note:** Configuration files in your current working directory will override the packaged defaults.
+
+## Usage
+
+MediaDownloader uses a unified launcher to access all tools. The general syntax is:
+
+```bash
+python -m media_downloader <tool_name>
+```
+
+### Image Gallery Scraper
+
+Download entire image galleries from configured websites:
+
+```bash
+python -m media_downloader images
+```
+
+**What it does:**
+- Navigates to the gallery overview page
+- Extracts links to individual galleries
+- Downloads all images from each gallery
+- Organizes files by gallery title
+- Skips videos if configured
+
+**Configuration:** Edit `configs/images.yaml` to customize:
+- Target website URL
+- Download location
+- CSS selectors for your target site
+- Image file extensions to download
+
+### YTS Torrent Downloader
+
+Search and download movie torrents from YTS:
+
+```bash
+python -m media_downloader yts
+```
+
+**What it does:**
+- Searches YTS for movies matching your criteria
+- Filters by resolution, language, year, and genre
+- Downloads matching torrents or magnet links
+- Logs all activities for review
+
+**Configuration:** Edit `configs/yts.yml` to customize:
+- Preferred resolutions (4K, 1080p, 720p)
+- Languages (English, German, Spanish, etc.)
+- Release year ranges
+- Favorite genres
+
+### RARBG Magnet Extractor
+
+Extract magnet links from RARBG:
+
+```bash
+python -m media_downloader rarbg
+```
+
+**What it does:**
+- Searches RARBG mirror sites
+- Extracts magnet links for torrents
+- Saves links for use with torrent clients
+- Handles site blocks with alternative URLs
+
+**Configuration:** Edit `configs/rarbg.yml`
+
+### Adult Video Scraper
+
+Download adult content from supported platforms:
+
+```bash
 python -m media_downloader porn
 ```
 

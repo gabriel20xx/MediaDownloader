@@ -1,0 +1,16 @@
+download_directory: "./output/Downloads"
+alternative_download_directory: "./output/Alternative"
+logs_directory: "./logs"
+prefix: "YTS"
+resolutions: ["2160p", "1080p", "720p"]
+languages: ["ENGLISH", "GERMAN", "SPANISH"]
+release_years: ["2020-2029", "2010-2019"]
+genres: ["action", "comedy", "thriller"]
+random_resolutions: false
+random_languages: false
+random_release_years: false
+random_genres: false
+max_duration: 720
+delay: 0
+skipped_threshold: 20
+user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0"
